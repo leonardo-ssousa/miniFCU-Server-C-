@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)\..\AudioControlNative.dll"><!-- informe o nome da sua dll -->
+            <Link>AudioControlNative.dll</Link>                               <!-- informe o nome da sua dll -->
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>
