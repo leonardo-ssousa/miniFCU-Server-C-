@@ -2,7 +2,10 @@
 
 ### A Fazer:
 - Criar rota para acionamento dos botões de atalho
+- Adicionar status e tipp dos leds dos botoes nos grupos de atalho
+- Criar um grupo de atalho como Default
 - Criar rota para alterar o valor de Encrease
+- Integracao com a Api do Flight Simulator 
 
 
 ### Feito:
