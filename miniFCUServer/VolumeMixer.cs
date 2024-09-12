@@ -8,6 +8,7 @@ namespace MiniFCUServer
     public class VolumeMixer
     {
         static string appConfig = Application.StartupPath + @"\appConfig.ini";
+        public static string currentShortcutGroup = "";
 
         /*
         public static string ProgramsList()
@@ -87,6 +88,61 @@ namespace MiniFCUServer
             json += "]";
             return json;
 
+        }
+
+        public static bool SaveNewApp(string key, string value)
+        {
+            var cfg = new ConfigParser(appConfig);
+            cfg.SetValue("FRIENDLY NAMES", key, value);
+            cfg.Save();
+
+            return true;
+        }
+
+        public static bool CreateNewShortcutGroup(string groupName)
+        {
+            var cfg = new ConfigParser(appConfig);
+
+            cfg.SetValue(groupName, "apBtn", "");
+            cfg.SetValue(groupName, "vsBtn", "");
+            cfg.SetValue(groupName, "navBtn", "");
+            cfg.SetValue(groupName, "aprBtn", "");
+            cfg.SetValue(groupName, "hdrBtn", "");
+
+            cfg.Save();
+
+            return true;
+        }
+
+        public static bool SetShortcutButtons(string buttonName, string keyToPress)
+        {
+            var cfg = new ConfigParser(appConfig);
+
+            switch (buttonName)
+            {
+                case "apBtn":
+                    cfg.SetValue(currentShortcutGroup, "apBtn", "keyToPress");
+                    break;
+                case "vsBtn":
+                    cfg.SetValue(currentShortcutGroup, "vsBtn", "keyToPress");
+                    break;
+                case "navBtn":
+                    cfg.SetValue(currentShortcutGroup, "navBtn", "keyToPress");
+                    break;
+                case "aprBtn":
+                    cfg.SetValue(currentShortcutGroup, "aprBtn", "keyToPress");
+                    break;
+                case "hdrBtn":
+                    cfg.SetValue(currentShortcutGroup, "hdrBtn", "keyToPress");
+                    break;
+                default:
+                    Debug.Write("Key not found!");
+                    break;
+            }
+
+            cfg.Save();
+
+            return true;
         }
     }
 }

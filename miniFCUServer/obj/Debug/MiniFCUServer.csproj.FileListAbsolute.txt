@@ -18,3 +18,23 @@ C:\Users\leona\source\repos\TesteWinForm\TesteWinForm\obj\Debug\MiniFCUServer.cs
 C:\Users\leona\source\repos\TesteWinForm\TesteWinForm\obj\Debug\aa-ER\MiniFCUServer.resources.dll
 C:\Users\leona\source\repos\TesteWinForm\TesteWinForm\obj\Debug\MiniFCUS.CB3F96E3.Up2Date
 C:\Users\leona\source\repos\TesteWinForm\TesteWinForm\obj\Debug\MiniFCUServer.pdb
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\AudioControlNative.dll
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\MiniFCUServer.exe.config
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\MiniFCUServer.exe
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\MiniFCUServer.pdb
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\aa-ER\MiniFCUServer.resources.dll
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\AudioControl.dll
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\bin\Debug\ConfigParser.dll
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.csproj.AssemblyReference.cache
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.MainPage.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.ModalAddApp.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.Main.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.Properties.Resources.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.SplashScreen.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.ItemListVolumeMixer.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.SplashScreen.aa-ER.resources
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.csproj.GenerateResource.cache
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.csproj.CoreCompileInputs.cache
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\aa-ER\MiniFCUServer.resources.dll
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUS.CB3F96E3.Up2Date
+C:\Users\leona\OneDrive\Documentos\Projeto MiniFCU 2024\volumeMixer - Server C#\miniFCUServer\obj\Debug\MiniFCUServer.pdb

@@ -65,6 +65,8 @@ namespace MiniFCUServer
                     //Separa Query
                     string pid = request.QueryString["pid"];
                     string volume = request.QueryString["vol"];
+                    string processName = request.QueryString["processname"];
+                    string friendlyName = request.QueryString["friendlyname"];
 
                     int increaseValue = 5;
 
@@ -85,6 +87,7 @@ namespace MiniFCUServer
                                 "       <p>/gettime -> Retorna hora do sistema </p>" +
                                 "       <p>/volumeup -> Aumenta volume conforme EncreaseValue (Necessário PID como query) </p>" + 
                                 "       <p>/volumedown -> Diminui volume conforme EncreaseValue (Necessário PID como query) </p>" + 
+                                "       <p>/savenewapp -> salva novo app (Necessário PROCESSNAME e FRIENDLYNAME como query) </p>" + 
                                 "   </body>" +
                                 "</html>" +
                                 "");
@@ -173,13 +176,20 @@ namespace MiniFCUServer
                             break;
 
                         case "/btn3":
-                            SendKeys.Send("{f16}");
+                            SendKeys.Send(Keys.BrowserHome.ToString());
+                            
                             btnState = !btnState;
                             Console.WriteLine(btnState);
                             setResponse(Convert.ToString(btnState));
                             break;
 
+                        case "/savenewapp":
+                            VolumeMixer.SaveNewApp(processName, friendlyName);
+                            setResponse($"pid: {pid} vol: {volume}");
+                            break;
+                        
                         case "/teste":
+                            VolumeMixer.SaveNewApp(processName, friendlyName);
                             setResponse($"pid: {pid} vol: {volume}");
                             break;
 

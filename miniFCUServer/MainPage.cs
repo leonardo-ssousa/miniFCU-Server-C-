@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -32,6 +33,12 @@ namespace MiniFCUServer
             InitializeComponent();
             (new MiniFCUServer.DropShadow()).ApplyShadows(this);
             server.Start();
+
+            if(!File.Exists(Application.StartupPath + @"\appConfig.ini"))
+            {
+                File.Create(Application.StartupPath + @"\appConfig.ini").Close();
+                Debug.WriteLine("AppConfig Criado!");
+            }
         }
 
         // Ativa o arrastar da janela 
