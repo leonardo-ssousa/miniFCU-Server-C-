@@ -29,8 +29,47 @@
 
 # Shortcuts Groups
 
-#### **GET** Create Shortcut Group
+> #### **GET** Create Shortcut Group
+> 
+> `http://localhost:8085/getshortcutgroup?groupname=Exemple+group`
+> 
+> |   Param   |  Type  |
+> |-----------|--------|
+> | groupname | string |
+
+<br>
+
+
+#### **GET** Read shortcut group
+
+`http://localhost:8085/getshortcutgroup?groupname=Exemple+group`
 
 |   Param   |  Type  |
 |-----------|--------|
 | groupname | string |
+
+<br>
+
+#### **GET** Update shortcut group buttons
+
+`http://localhost:8085/setshortcutbutton?groupname=MFS&buttonname=hdr&keytopress=A`
+
+|   Param    |  Type  |
+|------------|--------|
+| groupname  | string |
+| buttonname | string |
+| keytopress | string |
+
+<br>
+
+#### **GET** Update shortcut group buttons mode
+
+`http://localhost:8085/setshortcutbuttonmode?groupname=Teste2&buttonname=ap&istoggle=true`
+
+|   Param    |  Type   |
+|------------|---------|
+| groupname  | string  |
+| buttonname | string  |
+| keytopress | boolean |
+
+<br>
