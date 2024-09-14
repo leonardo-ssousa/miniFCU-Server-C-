@@ -1,14 +1,15 @@
 # miniFCU C# Server
 
 ### A Fazer:
-- Repensar forma de listar os grupos de atalhos aberto
-- Criar rota para acionamento dos botões de atalho
-- Criar um grupo de atalho como Default
+- Relacionar botoes que podem ser ultilizados como atalhos
 - Criar rota para alterar o valor de Encrease
 - Integracao com a Api do Flight Simulator 
 
 
 ### Feito:
+- Criar rota para acionamento dos botões de atalho
+- Criar um grupo de atalho como Default
+- Repensar forma de listar os grupos de atalhos aberto
 - Acesso aos programas em aberto no win
 - Acesso aos programas salvos
 - Rota para volume de app especifico

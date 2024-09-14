@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace MiniFCUServer
 {
@@ -71,6 +73,7 @@ namespace MiniFCUServer
                     string groupName = request.QueryString["groupname"];
                     string buttonName = request.QueryString["buttonname"];
                     string keyToPress= request.QueryString["keytopress"];
+                    bool buttonMode= Convert.ToBoolean( request.QueryString["istoggle"] );
 
                     int increaseValue = 5;
 
@@ -95,7 +98,6 @@ namespace MiniFCUServer
                                 "       <p></p>" +
                                 "       <p>/createshortcutgroup -> salva novo grupo de atalhos (Necessario GROUPNAME) </p>" + 
                                 "       <p>/getshortcutgroup -> obtem novo grupo de atalhos (Necessario GROUPNAME) </p>" +
-                                "       <p>/getactiveshortcutgroup -> obtem a lista de grupos de atalhos ativos</p>" +
                                 "       <p>/setshortcutbutton -> configura certo botao de atalhos (Necessario GROUPNAME, BUTTONNAME e KEYTOPRESS) </p>" + 
                                 "       <p>/deleteshortcutgroup -> deleta novo grupo de atalhos (Necessario GROUPNAME) </p>" + 
                                 "   </body>" +
@@ -190,6 +192,7 @@ namespace MiniFCUServer
                             setResponse($"pid: {pid} vol: {volume}");
                             break;
 
+
                         // #### SHORTCUT GROUP ####
 
                         case "/createshortcutgroup":
@@ -201,12 +204,12 @@ namespace MiniFCUServer
                             setResponse(VolumeMixer.GetShortcutGroup(groupName));
                             break;
 
-                        case "/getactiveshortcutgroup":
-                            setResponse(VolumeMixer.GetActiveShortcutGroup().ToString());
-                            break;
-
                         case "/setshortcutbutton":
                             setResponse(VolumeMixer.SetShortcutButtons(groupName, buttonName, keyToPress));
+                            break;
+
+                        case "/setshortcutbuttonmode":
+                            setResponse(VolumeMixer.SetShortcutButtons(groupName, buttonName, buttonMode));
                             break;
 
                         case "/deleteshortcutgroup":
@@ -214,12 +217,23 @@ namespace MiniFCUServer
                             setResponse($"{groupName} deletado!");
                             break;
 
-                        case "/btn3":
-                            //SendKeys.Send(Keys.BrowserHome.ToString());
-                            
+                        case "/pressbutton":
+                            //SendKeys.Send("{" + keyToPress +"}");
+                            InputSimulator InputSimulator = new InputSimulator();
+                            VirtualKeyCode key; 
+
+                            if(Enum.TryParse(keyToPress, true, out key))
+                            {
+                                InputSimulator.Keyboard.KeyPress(key);
+                                setResponse($"{keyToPress} pressed!");
+                            } else
+                            {
+                                setResponse($"key not found!!");
+                            }
+                            /*
                             btnState = !btnState;
-                            Console.WriteLine(btnState);
                             setResponse(Convert.ToString(btnState));
+                            */
                             break;
 
                         

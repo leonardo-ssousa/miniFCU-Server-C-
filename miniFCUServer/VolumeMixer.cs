@@ -1,7 +1,10 @@
-﻿using Salaros.Configuration;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Salaros.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Packaging;
 using System.Windows.Forms;
 
@@ -10,7 +13,6 @@ namespace MiniFCUServer
     public class VolumeMixer
     {
         static string appConfig = Application.StartupPath + @"\appConfig.ini";
-        public static string currentShortcutGroup = "";
 
         /*
         public static string ProgramsList()
@@ -103,90 +105,149 @@ namespace MiniFCUServer
 
 
         // #### SHORTCUT GROUP ####
+
+        private static readonly string groupListName = "Shortcut Groups";
+        private class ShortcutGroup
+        {
+            public string name { set; get; }
+            public string ap { set; get; }
+            public string vs { set; get; }
+            public string nav { set; get; }
+            public string apr { set; get; }
+            public string hdr { set; get; }
+
+            public bool apIsToggle { set; get; }
+            public bool vsIsToggle { set; get; }
+            public bool navIsToggle { set; get; }
+            public bool aprIsToggle { set; get; }
+            public bool hdrIsToggle { set; get; }
+        }
+
+
         public static bool CreateNewShortcutGroup(string groupName)
         {
             var cfg = new ConfigParser(appConfig);
 
-            //Save name
-            cfg.SetValue("Shortcut Group", groupName.Replace(" ", ""), groupName);
 
-            //Butons Value
-            cfg.SetValue(groupName, "ap", "");
-            cfg.SetValue(groupName, "vs", "");
-            cfg.SetValue(groupName, "nav", "");
-            cfg.SetValue(groupName, "apr", "");
-            cfg.SetValue(groupName, "hdr", "");
+            var newGroup = new ShortcutGroup
+            {
+                name = groupName,
+                ap = "F13",
+                vs = "F14",
+                nav = "F15",
+                apr = "F16",
+                hdr = "F17",
 
-            //Butons Mode
-            cfg.SetValue(groupName, "aptoogle", false);
-            cfg.SetValue(groupName, "vstoggle", false);
-            cfg.SetValue(groupName, "navtoggle", false);
-            cfg.SetValue(groupName, "aprtoggle", false);
-            cfg.SetValue(groupName, "hdrtoggle", false);
+                apIsToggle = false,
+                vsIsToggle = false,
+                navIsToggle = false,
+                aprIsToggle = false,
+                hdrIsToggle = false,
 
+            };
+
+            //Save group
+            cfg.SetValue("Shortcut Groups", groupName.Replace(" ", ""), JsonConvert.SerializeObject(newGroup));
             cfg.Save();
 
             return true;
         }
         public static string GetShortcutGroup(string groupName)
         {
-            string convertedToJson = "{";
 
             var cfg = new ConfigParser(appConfig);
-            foreach (var keys in cfg[groupName].Keys)
+
+            foreach(var key in cfg["Shortcut Groups"].Keys)
             {
-                convertedToJson +=  $"\"{keys.Name}\":\"{keys.ValueRaw}\",";
+                if (key.Name == groupName.Replace(" ", ""))
+                {
+                    return cfg["Shortcut Groups"][groupName.Replace(" ", "")];
+                }
             }
 
-            convertedToJson = convertedToJson.Remove(convertedToJson.Length - 1, 1);
-            convertedToJson += "}";
-            Debug.Write(convertedToJson);
-            return convertedToJson;
-        }
-        public static string[] GetActiveShortcutGroup()
-        {
-            var cfg = new ConfigParser(appConfig);
-            List<string>  activeList = new List<string>();
-
-            foreach(var key in cfg["Shortcut Group"].Keys)
-            {
-                activeList.Add(key.Name);
-            }
-
-            string[] returnArray = activeList.ToArray();
-            Debug.Write(returnArray[0]);
-
-            return activeList.ToArray();
-        }
+            return "Shortcut group not found!";
+        }      
         public static string SetShortcutButtons(string shortcutGroup, string buttonName, string keyToPress)
         {
             var cfg = new ConfigParser(appConfig);
-
-            switch (buttonName)
+            foreach (var key in cfg["Shortcut Groups"].Keys)
             {
-                case "ap":
-                    cfg.SetValue(shortcutGroup, "ap", keyToPress);
-                    break;
-                case "vs":
-                    cfg.SetValue(shortcutGroup, "vs", keyToPress);
-                    break;
-                case "nav":
-                    cfg.SetValue(shortcutGroup, "nav", keyToPress);
-                    break;
-                case "apr":
-                    cfg.SetValue(shortcutGroup, "apr", keyToPress);
-                    break;
-                case "hdr":
-                    cfg.SetValue(shortcutGroup, "hdr", keyToPress);
-                    break;
-                default:
-                    Debug.Write("Key not found!");
-                    break;
+                if (key.Name == shortcutGroup.Replace(" ", ""))
+                {
+                    string group = cfg.GetValue(groupListName, shortcutGroup.Replace(" ", "")); ;
+                    ShortcutGroup toJson = JsonConvert.DeserializeObject<ShortcutGroup>(group);
+
+                    switch (buttonName.ToLower())
+                    {
+                        case "ap":
+                            toJson.ap = keyToPress;
+                            break;
+                        case "vs":
+                            toJson.vs = keyToPress;
+                            break;
+                        case "nav":
+                            toJson.nav = keyToPress;
+                            break;
+                        case "apr":
+                            toJson.apr = keyToPress;
+                            break;
+                        case "hdr":
+                            toJson.hdr = keyToPress;
+                            break;
+                        default:
+                            Debug.Write("Key not found!");
+                            break;
+                    }
+
+                    cfg.SetValue(groupListName, shortcutGroup.Replace(" ", ""), JsonConvert.SerializeObject(toJson));
+                    cfg.Save();
+
+                    return $"{buttonName} set to {keyToPress}";
+                }
             }
 
-            cfg.Save();
+            return "Shortcut group not found!";            
+        }
+        public static string SetShortcutButtons(string shortcutGroup, string buttonName, bool buttonMode)
+        {
+            var cfg = new ConfigParser(appConfig);
+            foreach (var key in cfg["Shortcut Groups"].Keys)
+            {
+                if (key.Name == shortcutGroup.Replace(" ", ""))
+                {
+                    string group = cfg.GetValue(groupListName, shortcutGroup.Replace(" ", "")); ;
+                    ShortcutGroup toJson = JsonConvert.DeserializeObject<ShortcutGroup>(group);
 
-            return $"{buttonName} set to {keyToPress}";
+                    switch (buttonName.ToLower())
+                    {
+                        case "ap":
+                            toJson.apIsToggle = buttonMode;
+                            break;
+                        case "vs":
+                            toJson.vsIsToggle = buttonMode;
+                            break;
+                        case "nav":
+                            toJson.navIsToggle = buttonMode;
+                            break;
+                        case "apr":
+                            toJson.aprIsToggle = buttonMode;
+                            break;
+                        case "hdr":
+                            toJson.hdrIsToggle = buttonMode;
+                            break;
+                        default:
+                            Debug.Write("Key not found!");
+                            break;
+                    }
+
+                    cfg.SetValue(groupListName, shortcutGroup.Replace(" ", ""), JsonConvert.SerializeObject(toJson));
+                    cfg.Save();
+
+                    return $"{buttonName} set to {(buttonMode ? "toggle" : "not toggle")}";
+                }
+            }
+
+            return "Shortcut group not found!";
         }
         public static void DeleteShortcutGroup(string groupName)
         {
