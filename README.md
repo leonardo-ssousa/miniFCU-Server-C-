@@ -2,47 +2,46 @@
 
 
 
-### A Fazer:
+### ✏️ A Fazer:
 
+- [ ] Criar rota para alterar o valor de Encrease (Entender se fica no server ou no FCU)
+- [ ] Integracao com a Api do Flight Simulator
 
-- Relacionar botoes que podem ser ultilizados como atalhos
-- Criar rota para alterar o valor de Encrease
-- Integracao com a Api do Flight Simulator 
-
-
-### Feito:
-
-
-- Criar rota para acionamento dos botões de atalho
-- Criar um grupo de atalho como Default
-- Repensar forma de listar os grupos de atalhos aberto
-- Acesso aos programas em aberto no win
-- Acesso aos programas salvos
-- Rota para volume de app especifico
-- Criar rota para cadastro dos app a serem salvos
-- Criar rota para cadastro de novos atalhos
-- Arrumar arquivo de AppConfig.cfg
-- Criar rota para deletar grupo de atalhos
-- Adicionar status e tipo dos leds dos botoes nos grupos de atalho
+### ☑️ Feito:
+✅ Relacionar botoes que podem ser ultilizados como atalhos
+✅ Criar rota para acionamento dos botões de atalho <br>
+✅ Criar um grupo de atalho como Default <br>
+✅ Repensar forma de listar os grupos de atalhos aberto <br>
+✅ Acesso aos programas em aberto no win <br>
+✅ Acesso aos programas salvos <br>
+✅ Rota para volume de app especifico <br>
+✅ Criar rota para cadastro dos app a serem salvos <br>
+✅ Criar rota para cadastro de novos atalhos <br>
+✅ Arrumar arquivo de AppConfig.cfg <br>
+✅ Criar rota para deletar grupo de atalhos <br>
+✅ Adicionar status e tipo dos leds dos botoes nos grupos de atalho <br>
 
 ----------------------------
 
 # Shortcuts Groups
 
-> #### **GET** Create Shortcut Group
-> 
-> `http://localhost:8085/getshortcutgroup?groupname=Exemple+group`
-> 
-> |   Param   |  Type  |
-> |-----------|--------|
-> | groupname | string |
+ ### **GET** Create Shortcut Group 
+ 
+ ```
+ http://localhost:8085/getshortcutgroup?groupname=Exemple+group
+ ```
+ 
+ |   Param   |  Type  |
+ |-----------|--------|
+ | groupname | string |
 
 <br>
 
 
-#### **GET** Read shortcut group
-
-`http://localhost:8085/getshortcutgroup?groupname=Exemple+group`
+### **GET** Read shortcut group
+```
+http://localhost:8085/getshortcutgroup?groupname=Exemple+group
+```
 
 |   Param   |  Type  |
 |-----------|--------|
@@ -50,9 +49,11 @@
 
 <br>
 
-#### **GET** Update shortcut group buttons
+### **GET** Update shortcut group buttons
 
-`http://localhost:8085/setshortcutbutton?groupname=MFS&buttonname=hdr&keytopress=A`
+```
+http://localhost:8085/setshortcutbutton?groupname=Exemple+group&buttonname=hdr&keytopress=A
+```
 
 |   Param    |  Type  |
 |------------|--------|
@@ -62,14 +63,41 @@
 
 <br>
 
-#### **GET** Update shortcut group buttons mode
+### **GET** Update shortcut group buttons mode
 
-`http://localhost:8085/setshortcutbuttonmode?groupname=Teste2&buttonname=ap&istoggle=true`
+```
+http://localhost:8085/setshortcutbuttonmode?groupname=Exemple+group&buttonname=ap&istoggle=true
+```
 
 |   Param    |  Type   |
 |------------|---------|
 | groupname  | string  |
 | buttonname | string  |
-| keytopress | boolean |
+|  istoggle  | boolean |
+
+<br>
+
+### **GET** Delete shortcut group
+
+```
+http://localhost:8085/deleteshortcutgroup?groupname=Exemple+group
+```
+
+|   Param    |  Type   |
+|------------|---------|
+| groupname  | string  |
+
+<br>
+
+### **POST** Press key
+
+```
+http://localhost:8085/pressbutton?keytopress=NUMLOCK
+```
+
+|    Param    |  Type   |
+|-------------|---------|
+| pressbutton | string  |
+| keytopress  | string  |
 
 <br>

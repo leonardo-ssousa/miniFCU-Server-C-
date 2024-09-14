@@ -34,11 +34,13 @@ namespace MiniFCUServer
             (new MiniFCUServer.DropShadow()).ApplyShadows(this);
             server.Start();
 
-            if(!File.Exists(Application.StartupPath + @"\appConfig.ini"))
+            string path = Application.StartupPath + @"\appConfig.ini";
+            if (!File.Exists(path))
             {
-                File.Create(Application.StartupPath + @"\appConfig.ini").Close();
+                File.Create(path).Close();
                 Debug.WriteLine("AppConfig Criado!");
             }
+
         }
 
         // Ativa o arrastar da janela 

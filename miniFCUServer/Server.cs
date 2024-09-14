@@ -230,13 +230,13 @@ namespace MiniFCUServer
                             {
                                 setResponse($"key not found!!");
                             }
-                            /*
-                            btnState = !btnState;
-                            setResponse(Convert.ToString(btnState));
-                            */
                             break;
 
-                        
+                        case "/buttonslist":
+                            string buttonsList = "{\"Backspace\":\"BACK\",\"Tab\":\"TAB\",\"Clear\":\"CLEAR\",\"Enter\":\"RETURN\",\"Shift\":\"SHIFT\",\"Pause\":\"PAUSE\",\"CapsLock\":\"CAPITAL\",\"Space\":\"SPACE\",\"PageUp\":\"PRIOR\",\"PageDown\":\"NEXT\",\"End\":\"END\",\"Home\":\"HOME\",\"Left\":\"LEFT\",\"Up\":\"UP\",\"Right\":\"RIGHT\",\"Down\":\"DOWN\",\"Select\":\"SELECT\",\"Print\":\"PRINT\",\"PrintScreen\":\"SNAPSHOT\",\"Insert\":\"INSERT\",\"Delete\":\"DELETE\",\"0\":\"VK_0\",\"1\":\"VK_1\",\"2\":\"VK_2\",\"3\":\"VK_3\",\"4\":\"VK_4\",\"5\":\"VK_5\",\"6\":\"VK_6\",\"7\":\"VK_7\",\"8\":\"VK_8\",\"9\":\"VK_9\",\"A\":\"VK_A\",\"B\":\"VK_B\",\"C\":\"VK_C\",\"D\":\"VK_D\",\"E\":\"VK_E\",\"F\":\"VK_F\",\"G\":\"VK_G\",\"H\":\"VK_H\",\"I\":\"VK_I\",\"J\":\"VK_J\",\"K\":\"VK_K\",\"L\":\"VK_L\",\"M\":\"VK_M\",\"N\":\"VK_N\",\"O\":\"VK_O\",\"P\":\"VK_P\",\"Q\":\"VK_Q\",\"R\":\"VK_R\",\"S\":\"VK_S\",\"T\":\"VK_T\",\"U\":\"VK_U\",\"V\":\"VK_V\",\"W\":\"VK_W\",\"X\":\"VK_X\",\"Y\":\"VK_Y\",\"Z\":\"VK_Z\",\"Left_Win\":\"LWIN\",\"Right_Win\":\"RWIN\",\"Sleep\":\"SLEEP\",\"Numpad0\":\"NUMPAD0\",\"Numpad1\":\"NUMPAD1\",\"Numpad2\":\"NUMPAD2\",\"Numpad3\":\"NUMPAD3\",\"Numpad4\":\"NUMPAD4\",\"Numpad5\":\"NUMPAD5\",\"Numpad6\":\"NUMPAD6\",\"Numpad7\":\"NUMPAD7\",\"Numpad8\":\"NUMPAD8\",\"Numpad9\":\"NUMPAD9\",\"*\":\"MULTIPLY\",\"+\":\"ADD\",\"-\":\"SUBTRACT\",\",\":\"DECIMAL\",\"/\":\"DIVIDE\",\"F1\":\"F1\",\"F2\":\"F2\",\"F3\":\"F3\",\"F4\":\"F4\",\"F5\":\"F5\",\"F6\":\"F6\",\"F7\":\"F7\",\"F8\":\"F8\",\"F9\":\"F9\",\"F10\":\"F10\",\"F11\":\"F11\",\"F12\":\"F12\",\"F13\":\"F13\",\"F14\":\"F14\",\"F15\":\"F15\",\"F16\":\"F16\",\"F17\":\"F17\",\"F18\":\"F18\",\"F19\":\"F19\",\"F20\":\"F20\",\"F21\":\"F21\",\"F22\":\"F22\",\"F23\":\"F23\",\"F24\":\"F24\",\"Numlock\":\"NUMLOCK\",\"Scroll\":\"SCROLL\",\"Left_shift\":\"LSHIFT\",\"Right_shift\":\"RSHIFT\",\"Left_ctrl\":\"LCONTROL\",\"Right_ctrl\":\"RCONTROL\",\"Browser_Back\":\"BROWSER_BACK\",\"Browser_Forward\":\"BROWSER_FORWARD\",\"Browser_Refresh\":\"BROWSER_REFRESH\",\"Browser_Stop\":\"BROWSER_STOP\",\"Browser_Search\":\"BROWSER_SEARCH\",\"Browser_Favorites\":\"BROWSER_FAVORITES\",\"Browser_Home\":\"BROWSER_HOME\",\"Volume_Mute\":\"VOLUME_MUTE\",\"Volume_Down\":\"VOLUME_DOWN\",\"Volume_Up\":\"VOLUME_UP\",\"Media_Next_Track\":\"MEDIA_NEXT_TRACK\",\"Media_Prev_Track\":\"MEDIA_PREV_TRACK\",\"Media_Stop\":\"MEDIA_STOP\",\"Media_Play_Pause\":\"MEDIA_PLAY_PAUSE\",\"Launch_Mail\":\"LAUNCH_MAIL\"}"; 
+                            setResponse(buttonsList);
+                            break;
+
                         case "/teste":
                             VolumeMixer.SaveNewApp(processName, friendlyName);
                             setResponse($"pid: {pid} vol: {volume}");
