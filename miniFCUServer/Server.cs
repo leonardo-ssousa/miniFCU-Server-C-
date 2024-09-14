@@ -68,6 +68,10 @@ namespace MiniFCUServer
                     string processName = request.QueryString["processname"];
                     string friendlyName = request.QueryString["friendlyname"];
 
+                    string groupName = request.QueryString["groupname"];
+                    string buttonName = request.QueryString["buttonname"];
+                    string keyToPress= request.QueryString["keytopress"];
+
                     int increaseValue = 5;
 
 
@@ -87,7 +91,13 @@ namespace MiniFCUServer
                                 "       <p>/gettime -> Retorna hora do sistema </p>" +
                                 "       <p>/volumeup -> Aumenta volume conforme EncreaseValue (Necessário PID como query) </p>" + 
                                 "       <p>/volumedown -> Diminui volume conforme EncreaseValue (Necessário PID como query) </p>" + 
-                                "       <p>/savenewapp -> salva novo app (Necessário PROCESSNAME e FRIENDLYNAME como query) </p>" + 
+                                "       <p>/savenewapp -> salva novo app (Necessario PROCESSNAME e FRIENDLYNAME como query) </p>" +
+                                "       <p></p>" +
+                                "       <p>/createshortcutgroup -> salva novo grupo de atalhos (Necessario GROUPNAME) </p>" + 
+                                "       <p>/getshortcutgroup -> obtem novo grupo de atalhos (Necessario GROUPNAME) </p>" +
+                                "       <p>/getactiveshortcutgroup -> obtem a lista de grupos de atalhos ativos</p>" +
+                                "       <p>/setshortcutbutton -> configura certo botao de atalhos (Necessario GROUPNAME, BUTTONNAME e KEYTOPRESS) </p>" + 
+                                "       <p>/deleteshortcutgroup -> deleta novo grupo de atalhos (Necessario GROUPNAME) </p>" + 
                                 "   </body>" +
                                 "</html>" +
                                 "");
@@ -175,23 +185,49 @@ namespace MiniFCUServer
                             }
                             break;
 
+                        case "/savenewapp":
+                            VolumeMixer.SaveNewApp(processName, friendlyName);
+                            setResponse($"pid: {pid} vol: {volume}");
+                            break;
+
+                        // #### SHORTCUT GROUP ####
+
+                        case "/createshortcutgroup":
+                            VolumeMixer.CreateNewShortcutGroup(groupName);
+                            setResponse($"{groupName} criado!");
+                            break;
+
+                        case "/getshortcutgroup":
+                            setResponse(VolumeMixer.GetShortcutGroup(groupName));
+                            break;
+
+                        case "/getactiveshortcutgroup":
+                            setResponse(VolumeMixer.GetActiveShortcutGroup().ToString());
+                            break;
+
+                        case "/setshortcutbutton":
+                            setResponse(VolumeMixer.SetShortcutButtons(groupName, buttonName, keyToPress));
+                            break;
+
+                        case "/deleteshortcutgroup":
+                            VolumeMixer.DeleteShortcutGroup(groupName);
+                            setResponse($"{groupName} deletado!");
+                            break;
+
                         case "/btn3":
-                            SendKeys.Send(Keys.BrowserHome.ToString());
+                            //SendKeys.Send(Keys.BrowserHome.ToString());
                             
                             btnState = !btnState;
                             Console.WriteLine(btnState);
                             setResponse(Convert.ToString(btnState));
                             break;
 
-                        case "/savenewapp":
-                            VolumeMixer.SaveNewApp(processName, friendlyName);
-                            setResponse($"pid: {pid} vol: {volume}");
-                            break;
                         
                         case "/teste":
                             VolumeMixer.SaveNewApp(processName, friendlyName);
                             setResponse($"pid: {pid} vol: {volume}");
                             break;
+
 
                     }
 
