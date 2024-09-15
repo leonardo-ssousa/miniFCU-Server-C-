@@ -189,7 +189,7 @@ namespace MiniFCUServer
 
                         case "/savenewapp":
                             VolumeMixer.SaveNewApp(processName, friendlyName);
-                            setResponse($"pid: {pid} vol: {volume}");
+                            setResponse($"Process: {processName} Friendly name: {friendlyName} saved!");
                             break;
 
 
