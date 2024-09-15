@@ -4,6 +4,7 @@
 
 ### ✏️ A Fazer:
 
+- [ ] Criar rota que traga a lista de shortcuts salvos
 - [ ] Criar rota para alterar o valor de Encrease (Entender se fica no server ou no FCU)
 - [ ] Integracao com a Api do Flight Simulator
 
@@ -86,6 +87,16 @@ http://localhost:8085/deleteshortcutgroup?groupname=Exemple+group
 |   Param    |  Type   |
 |------------|---------|
 | groupname  | string  |
+
+<br>
+
+### **GET** Buttons list
+
+```
+http://localhost:8085/buttonslist
+```
+
+Retorna lista de botões que podem ser usados como atalho.
 
 <br>
 
