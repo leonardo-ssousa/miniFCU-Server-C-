@@ -4,11 +4,12 @@
 
 ### ✏️ A Fazer:
 
-- [ ] Criar rota que traga a lista de shortcuts salvos
+- [ ] Altera rota de apps salvos para trazer apenas os apps abertos.
 - [ ] Criar rota para alterar o valor de Encrease (Entender se fica no server ou no FCU)
 - [ ] Integracao com a Api do Flight Simulator
 
 ### ☑️ Feito:
+✅ Criar rota que traga a lista de shortcuts salvos
 ✅ Relacionar botoes que podem ser ultilizados como atalhos
 ✅ Criar rota para acionamento dos botões de atalho <br>
 ✅ Criar um grupo de atalho como Default <br>
