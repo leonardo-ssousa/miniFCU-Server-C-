@@ -38,6 +38,7 @@ namespace MiniFCUServer
             if (!File.Exists(path))
             {
                 File.Create(path).Close();
+                VolumeMixer.CreateNewShortcutGroup("Default");
                 Debug.WriteLine("AppConfig Criado!");
             }
 

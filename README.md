@@ -39,7 +39,7 @@
 <br>
 
 
-### **GET** Read shortcut group
+### **GET** Read a shortcut group
 ```
 http://localhost:8085/getshortcutgroup?groupname=Exemple+group
 ```
@@ -47,6 +47,14 @@ http://localhost:8085/getshortcutgroup?groupname=Exemple+group
 |   Param   |  Type  |
 |-----------|--------|
 | groupname | string |
+
+<br>
+
+### **GET** Get shortcuts groups list
+```
+http://localhost:8085/getshortcutgroups
+```
+Get a list of shirtcuts groups available.
 
 <br>
 

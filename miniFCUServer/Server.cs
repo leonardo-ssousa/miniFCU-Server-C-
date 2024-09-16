@@ -204,6 +204,10 @@ namespace MiniFCUServer
                             setResponse(VolumeMixer.GetShortcutGroup(groupName));
                             break;
 
+                        case "/getshortcutgroups":
+                            setResponse(VolumeMixer.GetShortcutGroups());
+                            break;
+
                         case "/setshortcutbutton":
                             setResponse(VolumeMixer.SetShortcutButtons(groupName, buttonName, keyToPress));
                             break;

@@ -166,7 +166,24 @@ namespace MiniFCUServer
             }
 
             return "Shortcut group not found!";
-        }      
+        }
+        public static string GetShortcutGroups()
+        {
+
+            var cfg = new ConfigParser(appConfig);
+            string shortcutGroups = "[";
+
+            foreach (var key in cfg["Shortcut Groups"].Keys)
+            {
+                shortcutGroups += $"\"{key.Name}\",";
+                Debug.WriteLine(key);
+            }
+
+            shortcutGroups = shortcutGroups.Substring(0, shortcutGroups.Length - 1);
+            shortcutGroups += "]";
+
+            return shortcutGroups;
+        }
         public static string SetShortcutButtons(string shortcutGroup, string buttonName, string keyToPress)
         {
             var cfg = new ConfigParser(appConfig);
