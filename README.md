@@ -1,6 +1,12 @@
 # miniFCU C# Server
 
+- Linguagem: C#
+- Formato de dados: JSON
+- Ambiente: Local
+- Objetivo: Intermediar comunicação entre Windows e dispositivo físico (miniFCU) via rede local
 
+<br>
+<br>
 
 ### ✏️ A Fazer:
 
@@ -9,8 +15,8 @@
 - [ ] Integracao com a Api do Flight Simulator
 
 ### ☑️ Feito:
-✅ Criar rota que traga a lista de shortcuts salvos
-✅ Relacionar botoes que podem ser ultilizados como atalhos
+✅ Criar rota que traga a lista de shortcuts salvos <br>
+✅ Relacionar botoes que podem ser ultilizados como atalhos <br>
 ✅ Criar rota para acionamento dos botões de atalho <br>
 ✅ Criar um grupo de atalho como Default <br>
 ✅ Repensar forma de listar os grupos de atalhos aberto <br>
@@ -27,7 +33,7 @@
 
 # Shortcuts Groups
 
- ### **GET** Create Shortcut Group 
+ ### **POST** Create Shortcut Group 
  
  ```
  http://localhost:8085/getshortcutgroup?groupname=Exemple+group
@@ -59,7 +65,7 @@ Get a list of shirtcuts groups available.
 
 <br>
 
-### **GET** Update shortcut group buttons
+### **PUT** Update shortcut group buttons
 
 ```
 http://localhost:8085/setshortcutbutton?groupname=Exemple+group&buttonname=hdr&keytopress=A
@@ -73,7 +79,7 @@ http://localhost:8085/setshortcutbutton?groupname=Exemple+group&buttonname=hdr&k
 
 <br>
 
-### **GET** Update shortcut group buttons mode
+### **PUT** Update shortcut group buttons mode
 
 ```
 http://localhost:8085/setshortcutbuttonmode?groupname=Exemple+group&buttonname=ap&istoggle=true
@@ -87,7 +93,7 @@ http://localhost:8085/setshortcutbuttonmode?groupname=Exemple+group&buttonname=a
 
 <br>
 
-### **GET** Delete shortcut group
+### **DELETE** Delete shortcut group
 
 ```
 http://localhost:8085/deleteshortcutgroup?groupname=Exemple+group
