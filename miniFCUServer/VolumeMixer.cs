@@ -115,6 +115,9 @@ namespace MiniFCUServer
             public string nav { set; get; }
             public string apr { set; get; }
             public string hdr { set; get; }
+            public string cima { set; get; }
+            public string baixo { set; get; }
+            public string centro { set; get; }
 
             public bool apIsToggle { set; get; }
             public bool vsIsToggle { set; get; }
@@ -210,6 +213,15 @@ namespace MiniFCUServer
                             break;
                         case "hdr":
                             toJson.hdr = keyToPress;
+                            break;
+                        case "cima":
+                            toJson.cima = keyToPress;
+                            break;
+                        case "baixo":
+                            toJson.baixo = keyToPress;
+                            break;
+                        case "centro":
+                            toJson.centro = keyToPress;
                             break;
                         default:
                             Debug.Write("Key not found!");
