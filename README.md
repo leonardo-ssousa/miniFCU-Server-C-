@@ -12,11 +12,12 @@
 
 ### ✏️ A Fazer:
 
-- [ ] Altera rota de apps salvos para trazer apenas os apps abertos.
+- [ ] Alterar retorno da rota de lista de grupos, deverá trazer como chave e valor ("testeGroup": "Grupo de Teste")
 - [ ] Criar rota para alterar o valor de Encrease (Entender se fica no server ou no FCU)
 - [ ] Integracao com a Api do Flight Simulator
 
 ### ☑️ Feito:
+✅ Altera rota de apps salvos para trazer apenas os apps abertos.
 ✅ Criar rota que traga a lista de shortcuts salvos <br>
 ✅ Relacionar botoes que podem ser ultilizados como atalhos <br>
 ✅ Criar rota para acionamento dos botões de atalho <br>
