@@ -130,7 +130,7 @@
  
  
  ```
- http://localhost:8085/getshortcutgroup?groupname=Exemple+group
+ http://localhost:8085/createshortcutgroups?groupname=Exemple+group
  ```
  
  |   Param   |  Type  |
